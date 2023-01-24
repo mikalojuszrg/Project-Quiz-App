@@ -1,0 +1,21 @@
+$base-color: #f5f7fb;
+
+.container {
+  width: 500px;
+  height: 500px;
+  background-color: $base-color;
+  position: relative;
+  &__blob {
+    position: absolute;
+
+    &--blue {
+      bottom: 100px;
+      left: 0;
+    }
+
+    &--yellow {
+      bottom: 0;
+      left: 0;
+    }
+  }
+}

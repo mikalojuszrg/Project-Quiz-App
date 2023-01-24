@@ -3,18 +3,22 @@ import classNames from "classnames";
 
 const cn = classNames.bind(styles);
 
+const classNamesMap = {
+  selected: [styles["button--selected"], styles["button"]],
+  neutral: [styles["button--neutral"], styles["button"]],
+  correct: [styles["button--correct"], styles["button"]],
+  incorrect: [styles["button--incorrect"], styles["button"]],
+  disabled: [styles["button--disabled"], styles["button"]],
+  default: [styles["button"]],
+};
+
 const Button = ({ variant, children }) => {
-  return (
-    <button
-      className={`
-      ${variant === "incorrect" ? cn(styles["button--incorrect"]) : ""}
-      ${variant === "correct" ? cn(styles["button--correct"]) : ""}
-      ${!variant ? cn(styles["button"]) : ""}
-    `}
-    >
-      {children}
-    </button>
-  );
+  const classes = classNamesMap[variant] || classNamesMap.default;
+  return <button className={cn(...classes)}>{children}</button>;
+};
+
+Button.defaultProps = {
+  variant: "default",
 };
 
 export default Button;
