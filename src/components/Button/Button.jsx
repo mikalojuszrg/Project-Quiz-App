@@ -9,7 +9,7 @@ const classNamesMap = {
   correct: [styles["button--correct"], styles["button"]],
   incorrect: [styles["button--incorrect"], styles["button"]],
   disabled: [styles["button--disabled"], styles["button"]],
-  default: [styles["button"]],
+  default: [styles["button--big"], styles["button"]],
 };
 
 const Button = ({ variant, children, onClick }) => {

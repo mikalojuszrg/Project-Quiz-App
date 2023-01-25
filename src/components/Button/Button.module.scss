@@ -4,12 +4,16 @@
   background-color: color.$base-color-dark;
   color: color.$base-color;
   border: 0;
-  padding: 1rem 3rem;
+  padding: 0.5rem 1rem;
   border-radius: 1rem;
   cursor: pointer;
 
   &:hover {
     filter: brightness(0.75);
+  }
+
+  &--big {
+    padding: 1rem 3rem;
   }
 
   &--selected {

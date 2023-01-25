@@ -6,6 +6,8 @@ import { GameContext } from "../../contexts/GameContext";
 const GameIntro = () => {
   const { gameOn, toggleGameOn } = useContext(GameContext);
 
+  console.log(gameOn);
+
   return (
     <div className={styles.container}>
       <h1 className={styles.container__heading}>Quizzical</h1>

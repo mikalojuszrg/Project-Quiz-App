@@ -6,7 +6,7 @@ const GameProvider = ({ children }) => {
   const [gameOn, setGameOn] = useState(false);
 
   const toggleGameOn = () => {
-    setGameOn((prevaValue) => !prevaValue);
+    setGameOn(true);
   };
 
   return (

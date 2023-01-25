@@ -8,6 +8,9 @@ const GamePlay = () => {
   const { gameOn } = useContext(GameContext);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selected, setSelected] = useState([]);
+
+  console.log(gameOn);
 
   useEffect(() => {
     setLoading(true);
@@ -19,17 +22,24 @@ const GamePlay = () => {
       });
   }, [gameOn]);
 
-  console.log(questions);
+  //   const toggleSelected = (answer) => {
+  //     setSelected((prevArr) => [...prevArr, answer]);
+  //   };
 
   return (
-    <div>
+    <div className={styles.container}>
       {loading ? (
         <Loader />
       ) : (
         <div>
           {questions.results &&
             questions.results.map((question) => (
-              <GameCard key={question.question} {...question} />
+              <GameCard
+                // toggleSelected={toggleSelected}
+                selected={selected}
+                key={question.question}
+                {...question}
+              />
             ))}
         </div>
       )}
