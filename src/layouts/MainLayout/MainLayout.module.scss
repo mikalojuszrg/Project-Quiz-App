@@ -1,21 +1,23 @@
-$base-color: #f5f7fb;
+@use "../../sass/utilities/colorVariables.scss" as color;
 
 .container {
-  width: 500px;
-  height: 500px;
-  background-color: $base-color;
+  width: 100%;
+  height: 100vh;
+  background-color: color.$base-color;
   position: relative;
   &__blob {
     position: absolute;
 
     &--blue {
-      bottom: 100px;
+      bottom: 0;
       left: 0;
+      overflow: hidden;
+      height: 200px;
     }
 
     &--yellow {
-      bottom: 0;
-      left: 0;
+      top: 0;
+      right: 0;
     }
   }
 }

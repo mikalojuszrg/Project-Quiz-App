@@ -5,7 +5,7 @@ import YellowBlob from "./svgs/YellowBlob";
 
 const cn = classNames.bind(styles);
 
-const MainLayout = () => {
+const MainLayout = ({ children }) => {
   return (
     <div className={cn(styles.container)}>
       <div
@@ -21,6 +21,7 @@ const MainLayout = () => {
       >
         <YellowBlob />
       </div>
+      {children}
     </div>
   );
 };

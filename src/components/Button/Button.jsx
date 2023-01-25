@@ -12,9 +12,13 @@ const classNamesMap = {
   default: [styles["button"]],
 };
 
-const Button = ({ variant, children }) => {
+const Button = ({ variant, children, onClick }) => {
   const classes = classNamesMap[variant] || classNamesMap.default;
-  return <button className={cn(...classes)}>{children}</button>;
+  return (
+    <button onClick={onClick} className={cn(...classes)}>
+      {children}
+    </button>
+  );
 };
 
 Button.defaultProps = {

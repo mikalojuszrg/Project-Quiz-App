@@ -1,11 +1,20 @@
 import { Routes, Route } from "react-router-dom";
-import StartPage from "./pages/StartPage/StartPage";
+import MainLayout from "./layouts/MainLayout/MainLayout";
+
+import MainPage from "./pages/MainPage/MainPage";
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<StartPage />}></Route>
+        <Route
+          path="/"
+          element={
+            <MainLayout>
+              <MainPage />
+            </MainLayout>
+          }
+        ></Route>
       </Routes>
     </div>
   );

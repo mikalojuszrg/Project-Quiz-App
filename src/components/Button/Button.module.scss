@@ -1,37 +1,36 @@
-$base-color-dark: #4d5b9e;
-$base-color: #f5f7fb;
-$primary-color-light: #d6dbf5;
-$primary-color: #293264;
-$secondary-color: #94d7a2;
-$tertiary-color: #f8bcbc;
+@use "../../sass/utilities/colorVariables.scss" as color;
 
 .button {
-  background-color: $base-color-dark;
-  color: $base-color;
+  background-color: color.$base-color-dark;
+  color: color.$base-color;
   border: 0;
-  padding: 1rem 2rem;
+  padding: 1rem 3rem;
   border-radius: 1rem;
   cursor: pointer;
 
+  &:hover {
+    filter: brightness(0.75);
+  }
+
   &--selected {
-    background-color: $primary-color-light;
-    color: $primary-color;
+    background-color: color.$primary-color-light;
+    color: color.$primary-color;
   }
 
   &--neutral {
-    border: 1px solid $base-color-dark;
+    border: 1px solid color.$base-color-dark;
     background-color: transparent;
-    color: $primary-color;
+    color: color.$primary-color;
   }
 
   &--correct {
-    background-color: $secondary-color;
-    color: $primary-color;
+    background-color: color.$secondary-color;
+    color: color.$primary-color;
   }
 
   &--incorrect {
-    background-color: $tertiary-color;
-    color: $primary-color;
+    background-color: color.$tertiary-color;
+    color: color.$primary-color;
     opacity: 0.5;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   }
@@ -39,7 +38,7 @@ $tertiary-color: #f8bcbc;
   &--disabled {
     opacity: 0.5;
     background-color: transparent;
-    color: $base-color-dark;
-    border: 1px solid $base-color-dark;
+    color: color.$base-color-dark;
+    border: 1px solid color.$base-color-dark;
   }
 }
