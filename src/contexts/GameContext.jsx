@@ -1,16 +1,25 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 const GameContext = createContext();
 
 const GameProvider = ({ children }) => {
-  const [gameOn, setGameOn] = useState(false);
+  const [gameQuestions, setGameQuestions] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const toggleGameOn = () => {
-    setGameOn(true);
-  };
+  useEffect(() => {
+    setLoading(true);
+    fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+      .then((resp) => resp.json())
+      .then((response) => {
+        setGameQuestions(response.results);
+        setLoading(false);
+      });
+  }, []);
 
   return (
-    <GameContext.Provider value={{ gameOn, toggleGameOn }}>
+    <GameContext.Provider
+      value={{ gameQuestions, setGameQuestions, loading, setLoading }}
+    >
       {children}
     </GameContext.Provider>
   );

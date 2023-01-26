@@ -3,10 +3,8 @@ import Button from "../Button/Button";
 import { useContext } from "react";
 import { GameContext } from "../../contexts/GameContext";
 
-const GameIntro = () => {
-  const { gameOn, toggleGameOn } = useContext(GameContext);
-
-  console.log(gameOn);
+const GameIntro = ({ toggleGameOn }) => {
+  const { gameQuestions } = useContext(GameContext);
 
   return (
     <div className={styles.container}>
