@@ -5,6 +5,7 @@ const GameContext = createContext();
 const GameProvider = ({ children }) => {
   const [gameQuestions, setGameQuestions] = useState("");
   const [loading, setLoading] = useState(false);
+  const [game, setGame] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -14,11 +15,22 @@ const GameProvider = ({ children }) => {
         setGameQuestions(response.results);
         setLoading(false);
       });
-  }, []);
+  }, [game]);
+
+  const toggleGame = () => {
+    setGame((prevValue) => !prevValue);
+  };
 
   return (
     <GameContext.Provider
-      value={{ gameQuestions, setGameQuestions, loading, setLoading }}
+      value={{
+        gameQuestions,
+        setGameQuestions,
+        loading,
+        setLoading,
+        toggleGame,
+        game,
+      }}
     >
       {children}
     </GameContext.Provider>

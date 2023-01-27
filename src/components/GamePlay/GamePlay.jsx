@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { GameContext } from "../../contexts/GameContext";
 import Button from "../Button/Button";
 import GameCard from "../GameCard/GameCard";
@@ -6,12 +6,17 @@ import Loader from "../Loader/Loader";
 import styles from "./GamePlay.module.scss";
 
 const GamePlay = ({ toggleGameOn }) => {
-  const { gameQuestions, loading } = useContext(GameContext);
+  const { gameQuestions, loading, toggleGame, game } = useContext(GameContext);
   const [selected, setSelected] = useState([]);
   const [numCorrect, setNumCorrect] = useState(0);
   const [submitted, setSubmitted] = useState(false);
 
-  console.log(selected);
+  console.log(game);
+
+  const playNewGame = () => {
+    toggleGameOn();
+    toggleGame();
+  };
 
   const checkCorrectAnswers = () => {
     setNumCorrect(
@@ -52,7 +57,7 @@ const GamePlay = ({ toggleGameOn }) => {
       {submitted && (
         <div className={styles.container__score}>
           <p>You scored {numCorrect}/5 correct answers</p>
-          <Button onClick={toggleGameOn}>Play again</Button>
+          <Button onClick={playNewGame}>Play again</Button>
         </div>
       )}
     </div>
