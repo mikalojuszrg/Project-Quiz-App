@@ -1,8 +1,11 @@
+@use "../../sass/utilities/colorVariables.scss" as color;
+
 .card {
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: 1rem;
+  color: color.$primary-color;
 
   &__question {
     font-size: 1rem;

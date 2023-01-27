@@ -5,11 +5,13 @@ import GameCard from "../GameCard/GameCard";
 import Loader from "../Loader/Loader";
 import styles from "./GamePlay.module.scss";
 
-const GamePlay = () => {
+const GamePlay = ({ toggleGameOn }) => {
   const { gameQuestions, loading } = useContext(GameContext);
   const [selected, setSelected] = useState([]);
   const [numCorrect, setNumCorrect] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+
+  console.log(selected);
 
   const checkCorrectAnswers = () => {
     setNumCorrect(
@@ -48,9 +50,9 @@ const GamePlay = () => {
         <Button onClick={checkCorrectAnswers}>Check answers</Button>
       </div>
       {submitted && (
-        <div>
+        <div className={styles.container__score}>
           <p>You scored {numCorrect}/5 correct answers</p>
-          <Button>Play again</Button>
+          <Button onClick={toggleGameOn}>Play again</Button>
         </div>
       )}
     </div>

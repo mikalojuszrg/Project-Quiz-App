@@ -7,12 +7,16 @@ const MainPage = () => {
   const [gameOn, setGameOn] = useState(false);
 
   const toggleGameOn = () => {
-    setGameOn(true);
+    setGameOn((prevValue) => !prevValue);
   };
 
   return (
     <div className={styles.container}>
-      {gameOn ? <GamePlay /> : <GameIntro toggleGameOn={toggleGameOn} />}
+      {gameOn ? (
+        <GamePlay toggleGameOn={toggleGameOn} />
+      ) : (
+        <GameIntro toggleGameOn={toggleGameOn} />
+      )}
     </div>
   );
 };

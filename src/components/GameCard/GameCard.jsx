@@ -1,5 +1,4 @@
 import { useEffect, useState, useContext } from "react";
-import { GameContext } from "../../contexts/GameContext";
 import Button from "../Button/Button";
 import styles from "./GameCard.module.scss";
 
@@ -7,7 +6,6 @@ const GameCard = ({
   question,
   correct_answer,
   incorrect_answers,
-  selected,
   setSelected,
   submitted,
 }) => {
@@ -16,27 +14,27 @@ const GameCard = ({
   useEffect(() => {
     const answers = [...incorrect_answers, correct_answer]
       .sort(() => Math.random() - 0.5)
+      .filter((prevAnswer) => !prevAnswer.isSelected)
       .map((answer) => ({
         text: answer,
         isSelected: false,
         isCorrect: answer === correct_answer,
+        question: question,
       }));
     setAnswers(answers);
   }, [incorrect_answers, correct_answer]);
 
   const handleSelected = (answer) => {
     setAnswers((prevAnswers) =>
-      prevAnswers.map((prevAnswer) => {
-        if (prevAnswer.text === answer.text) {
-          return {
-            ...prevAnswer,
-            isSelected: !prevAnswer.isSelected,
-          };
-        }
-        return prevAnswer;
-      })
+      prevAnswers.map((prevAnswer) => ({
+        ...prevAnswer,
+        isSelected: prevAnswer.text === answer.text,
+      }))
     );
-    setSelected((prevArray) => [...prevArray, { ...answer, isSelected: true }]);
+    setSelected((prev) => [
+      ...prev.filter((item) => item.question !== answer.question),
+      answer,
+    ]);
   };
 
   return (
